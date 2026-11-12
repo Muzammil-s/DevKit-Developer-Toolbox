@@ -1,20 +1,45 @@
-# DevKit — Small Tools for Developers
+# DevKit — Client-Side Developer Workbench
 
-A browser-based collection of small utilities built with vanilla JavaScript. It is intentionally dependency-free and makes no network requests.
+**DevKit** is a lightweight, zero-network developer utility suite running entirely in the browser with native Web APIs (`JSON`, `URL`, `TextEncoder`, `crypto.subtle`).
 
-## Tools
-- **JSON formatter:** parses JSON, shows clear parse errors and formats valid data with two-space indentation.
-- **URL component encoder/decoder:** encode text with `encodeURIComponent`; double-click the action button to decode.
-- **Base64 text converter:** encode UTF-8 text; double-click the action button to decode Base64. Unicode is supported.
+---
 
-## Run
-Open `index.html` in a browser, or serve the directory with VS Code Live Server.
+## Application Preview
 
-## Deploy
-Import the repository into Vercel or publish with GitHub Pages. It is a static site and needs no build command, secrets or API key.
+![DevKit Developer Toolbox](docs/screenshot.png)
 
-## Privacy and security
-All conversions happen locally in the browser. Base64 is encoding, not encryption; it must not be used to protect credentials or other secrets.
 
-## Built with
-HTML · CSS · Vanilla JavaScript · JSON API · URL API · TextEncoder/TextDecoder
+## Included Utilities (7 Tools)
+
+1. **JSON Formatter & Validator** — Pretty-print (2/4 spaces), minify, sort keys alphabetically, and surface syntax errors.
+2. **URL Encoder / Decoder & Query Parser** — Encode/decode URL components and extract query parameter pairs.
+3. **Base64 / UTF-8 Converter** — Full Unicode Base64 encoding/decoding with URL-safe (`-`, `_`) toggle.
+4. **JWT Inspector** — Inspect JWT headers, claims payloads, and human-readable `iat`/`exp` timestamps locally.
+5. **Regex Tester** — Test JavaScript regular expressions with flags and inspect capture groups.
+6. **Hash & UUID Generator** — Compute SHA-1/256/384/512 digests via `crypto.subtle` and generate UUID v4 tokens.
+7. **Time & Color Converter** — Convert Unix epochs / ISO-8601 dates and HEX/RGB/HSL color values.
+
+---
+
+## Run Locally & Test
+
+```bash
+# Run unit tests (Node 18+)
+node --test tests/devkit.test.mjs
+
+# Serve locally
+npx serve .
+```
+
+---
+
+## Limitations
+
+- JWT Inspector decodes claims for debugging only; it does not verify cryptographic signatures.
+- Client-side only: intentionally has no cloud sync or server persistence.
+
+---
+
+## Author
+
+**Muzammil Shabbir** — [GitHub](https://github.com/Muzammil-s) · [LinkedIn](https://www.linkedin.com/in/muzammil-shabbir-7368a7382)

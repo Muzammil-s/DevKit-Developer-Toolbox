@@ -1,24 +1,95 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="DevKit is a lightweight browser-based toolkit for formatting JSON, encoding URLs and converting Base64 text." />
-  <meta name="theme-color" content="#0a0c13" /><title>DevKit — Small Tools for Developers</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="DevKit is a zero-network browser-based developer workbench for JSON formatting, URL encoding, Base64, JWT inspection, Regex testing, hashing/UUIDs, and timestamps/colors." />
+  <meta name="theme-color" content="#0a0c13" />
+  <title>DevKit — Developer Workbench</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="#top"><span class="brand-icon">&lt;/&gt;</span> DEV<span>KIT</span></a><div class="top-right"><span class="status"><i></i> ALL TOOLS RUN LOCALLY</span><a href="https://github.com/Muzammil-s" target="_blank" rel="noreferrer">BY MUZAMMIL ↗</a></div></header>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-icon">&lt;/&gt;</span> DEV<span>KIT</span></a>
+    <div class="top-right">
+      <span class="status"><i></i> ZERO-NETWORK CLIENT WORKBENCH</span>
+      <a href="https://github.com/Muzammil-s" target="_blank" rel="noreferrer">BY MUZAMMIL &#8599;</a>
+    </div>
+  </header>
+
   <main class="shell" id="top">
-    <section class="intro"><div class="eyebrow">A LITTLE TOOLBOX FOR EVERYDAY DEVELOPMENT</div><h1>Less busywork.<br /><span>More building.</span></h1><p>Handy text and data utilities in one clean workspace. No sign-up, no API keys and no data sent to a server.</p></section>
+    <section class="intro">
+      <div class="eyebrow">DEVELOPER UTILITY WORKBENCH</div>
+      <h1>Less busywork.<br /><span>More building.</span></h1>
+      <p>Seven everyday encoding, parsing, cryptography, and inspection utilities in one fast workspace. Zero sign-up, zero tracking, and zero server requests.</p>
+    </section>
+
     <section class="workspace">
-      <aside class="sidebar"><div class="side-label">TOOLBOX</div><button class="tool-tab active" data-tool="json"><span class="tool-symbol">{ }</span><span><b>JSON formatter</b><small>Format & validate</small></span><em>01</em></button><button class="tool-tab" data-tool="url"><span class="tool-symbol">↗</span><span><b>URL encoder</b><small>Encode & decode</small></span><em>02</em></button><button class="tool-tab" data-tool="base64"><span class="tool-symbol">64</span><span><b>Base64 converter</b><small>Text to Base64</small></span><em>03</em></button><div class="privacy-note"><span>◈</span><b>Private by design</b><small>Your input stays in this browser tab. The tools do not make network requests.</small></div></aside>
+      <aside class="sidebar" aria-label="Developer tools">
+        <div class="side-label">TOOLBOX (7)</div>
+        <button class="tool-tab active" data-tool="json"><span class="tool-symbol">{ }</span><span><b>JSON Formatter</b><small>Format, minify &amp; sort</small></span><em>01</em></button>
+        <button class="tool-tab" data-tool="url"><span class="tool-symbol">%</span><span><b>URL &amp; Query</b><small>Encode, decode, parse</small></span><em>02</em></button>
+        <button class="tool-tab" data-tool="base64"><span class="tool-symbol">64</span><span><b>Base64 / UTF-8</b><small>Standard &amp; URL-safe</small></span><em>03</em></button>
+        <button class="tool-tab" data-tool="jwt"><span class="tool-symbol">JWT</span><span><b>JWT Inspector</b><small>Decode header &amp; claims</small></span><em>04</em></button>
+        <button class="tool-tab" data-tool="regex"><span class="tool-symbol">.*</span><span><b>Regex Tester</b><small>Matches &amp; groups</small></span><em>05</em></button>
+        <button class="tool-tab" data-tool="crypto"><span class="tool-symbol">#</span><span><b>Hash &amp; UUID</b><small>SHA-256/512 &amp; v4</small></span><em>06</em></button>
+        <button class="tool-tab" data-tool="convert"><span class="tool-symbol">&#9201;</span><span><b>Time &amp; Color</b><small>Unix epoch &amp; HEX/RGB</small></span><em>07</em></button>
+        <div class="privacy-note">
+          <span>&#9672;</span>
+          <b>Private by design</b>
+          <small>All transformations run locally in your browser tab via native Web APIs.</small>
+        </div>
+      </aside>
+
       <section class="tool-panel" aria-live="polite">
-        <div class="tool-heading"><div><div class="micro" id="toolNumber">TOOL 01 / DATA</div><h2 id="toolTitle">JSON formatter</h2><p id="toolDescription">Turn compact JSON into readable, validated data.</p></div><span class="local-tag">NO SERVER</span></div>
-        <div class="editor-grid"><div class="editor-col"><div class="editor-head"><label for="source">INPUT</label><button class="subtle-button" id="loadExample">LOAD EXAMPLE</button></div><textarea id="source" spellcheck="false" placeholder="Paste or type your content here..."></textarea></div><div class="editor-col"><div class="editor-head"><label for="output">OUTPUT</label><button class="subtle-button" id="copyOutput">COPY</button></div><textarea id="output" spellcheck="false" readonly placeholder="Your result will appear here..."></textarea></div></div>
-        <div class="actions"><button class="run-button" id="runTool">Format JSON <span>→</span></button><button class="clear-button" id="toggleMode" type="button">Switch to decode</button><button class="clear-button" id="clearTool" type="button">Clear</button><span class="message" id="message" role="status"></span></div>
-        <div class="hint" id="toolHint">JSON is parsed before it is formatted, so invalid input will show a useful error.</div>
+        <div class="tool-heading">
+          <div>
+            <div class="micro" id="toolNumber">TOOL 01 / DATA</div>
+            <h2 id="toolTitle">JSON Formatter</h2>
+            <p id="toolDescription">Format, validate, minify, or sort keys in JSON payloads.</p>
+          </div>
+          <span class="local-tag">CTRL + ENTER TO RUN</span>
+        </div>
+
+        <div id="subControls" class="sub-controls"></div>
+
+        <div class="editor-grid">
+          <div class="editor-col">
+            <div class="editor-head">
+              <label for="source" id="sourceLabel">INPUT</label>
+              <button class="subtle-button" id="loadExample" type="button">LOAD EXAMPLE</button>
+            </div>
+            <textarea id="source" spellcheck="false" placeholder="Paste or type your content here..."></textarea>
+          </div>
+          <div class="editor-col">
+            <div class="editor-head">
+              <label for="output" id="outputLabel">OUTPUT</label>
+              <button class="subtle-button" id="copyOutput" type="button">COPY</button>
+            </div>
+            <textarea id="output" spellcheck="false" readonly placeholder="Your result will appear here..."></textarea>
+          </div>
+        </div>
+
+        <div id="extraPreview" class="extra-preview" hidden></div>
+
+        <div class="actions">
+          <button class="run-button" id="runTool" type="button">Run Tool <span>&#8594;</span></button>
+          <button class="clear-button" id="secondaryAction" type="button" hidden>Secondary</button>
+          <button class="clear-button" id="clearTool" type="button">Clear</button>
+          <span class="message" id="message" role="status"></span>
+        </div>
+
+        <div class="hint" id="toolHint"></div>
       </section>
     </section>
-    <footer><span>DEVKIT / SMALL UTILITIES, LESS FRICTION</span><span>HTML · CSS · VANILLA JS</span><span>© <b id="year"></b> MUZAMMIL SHABBIR</span></footer>
-  </main><script src="app.js"></script>
-</body></html>
+
+    <footer class="footer">
+      <span>DEVKIT / CLIENT-SIDE WORKBENCH</span>
+      <span>HTML · CSS · ES MODULE JS · WEB CRYPTO</span>
+      <span>&copy; <b id="year"></b> MUZAMMIL SHABBIR</span>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
