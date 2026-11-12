@@ -4,6 +4,11 @@
 
 ---
 
+## Live Demo
+
+- **Production URL:** [https://devkit-toolbox.vercel.app/](https://devkit-toolbox.vercel.app/)
+- **Mode:** Live client-side developer toolbox deployed on Vercel.
+
 ## Application Preview
 
 ![DevKit Developer Toolbox](docs/screenshot.png)
